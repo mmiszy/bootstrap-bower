@@ -1541,7 +1541,7 @@ angular.module('ui.bootstrap.typeahead', [])
 
       //should it restrict model values to the ones selected from the popup only?
       var isEditable = originalScope.$eval(attrs.typeaheadEditable) !== false;
-      console.log(isEditable);
+
       var isLoadingSetter = $parse(attrs.typeaheadLoading).assign || angular.noop;
 
       //create a child scope for the typeahead directive so we are not polluting original scope

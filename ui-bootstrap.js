@@ -658,6 +658,7 @@ dialogModule.provider("$dialog", function(){
         setTimeout(function(){
           if(self.options.dialogFade){ self.modalEl.addClass(self.options.triggerClass); }
           if(self.options.backdropFade){ self.backdropEl.addClass(self.options.triggerClass); }
+          $document.trigger('dialogOpened');
         });
 
         self._bindEvents();

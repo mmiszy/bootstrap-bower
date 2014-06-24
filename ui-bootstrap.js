@@ -1623,7 +1623,7 @@ angular.module('ui.bootstrap.typeahead', [])
         return isEditable ? inputValue : undefined;
       });
 
-      modelCtrl.$render = function () {
+      var $renderModelCtrl = modelCtrl.$render = function () {
         var locals = {};
         locals[parserResult.itemName] = selected || modelCtrl.$viewValue;
         element.val(parserResult.viewMapper(scope, locals) || modelCtrl.$viewValue);
@@ -1637,6 +1637,7 @@ angular.module('ui.bootstrap.typeahead', [])
 
         modelCtrl.$setViewValue(parserResult.modelMapper(scope, locals));
         modelCtrl.$render();
+        $renderModelCtrl();
       };
 
       //bind keyboard events: arrows up(38) / down(40), enter(13) and tab(9), esc(27)

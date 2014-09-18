@@ -620,8 +620,9 @@ dialogModule.provider("$dialog", function(){
 
       this.handleViewChange = function() {
         if (self.isOpen()) {
-          self.close();
-          self.$scope.$apply();
+          self.$scope.$evalAsync(function () {
+            self.close();
+          });
         }
       };
     }
@@ -717,7 +718,7 @@ dialogModule.provider("$dialog", function(){
       if(this.options.keyboard){ body.bind('keydown', this.handledEscapeKey); }
       if(this.options.backdrop && this.options.backdropClick){ this.backdropEl.bind('click', this.handleBackDropClick); }
 
-      this.$scope.$on('$locationChangeSuccess', this.handleViewChange);
+      this.$scope.$on('$routeChangeSuccess', this.handleViewChange);
     };
 
     Dialog.prototype._unbindEvents = function() {
